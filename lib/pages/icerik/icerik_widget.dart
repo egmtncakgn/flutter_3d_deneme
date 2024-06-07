@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'icerik_model.dart';
 export 'icerik_model.dart';
 
@@ -112,6 +113,8 @@ class _IcerikWidgetState extends State<IcerikWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<UrunlerRecord>(
       stream: UrunlerRecord.getDocument(widget.urun!.reference),
       builder: (context, snapshot) {
@@ -159,6 +162,8 @@ class _IcerikWidgetState extends State<IcerikWidget>
                       size: 30.0,
                     ),
                     onPressed: () async {
+                      FFAppState().openView = false;
+                      setState(() {});
                       context.pop();
                     },
                   ),
@@ -180,29 +185,33 @@ class _IcerikWidgetState extends State<IcerikWidget>
                             children: [
                               Stack(
                                 children: [
-                                  const FlutterFlowWebView(
-                                    content:
-                                        '<iframe id=\"bd36b6eb-d75f-4425-ae3f-29fd1a589552\" src=\"https://app.vectary.com/viewer/v1/?model=bd36b6eb-d75f-4425-ae3f-29fd1a589552&env=dark5multicolor\" frameborder=\"0\" width=\"100%\" height=\"480\"></iframe>',
-                                    height: 500.0,
-                                    verticalScroll: false,
-                                    horizontalScroll: false,
-                                    html: true,
-                                  ),
-                                  ClipRRect(
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(16.0),
-                                      bottomRight: Radius.circular(16.0),
-                                      topLeft: Radius.circular(0.0),
-                                      topRight: Radius.circular(0.0),
+                                  if (FFAppState().openView == false)
+                                    ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(16.0),
+                                        bottomRight: Radius.circular(16.0),
+                                        topLeft: Radius.circular(0.0),
+                                        topRight: Radius.circular(0.0),
+                                      ),
+                                      child: Image.network(
+                                        icerikUrunlerRecord.imgPath,
+                                        width: double.infinity,
+                                        height: 470.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'imageOnPageLoadAnimation']!),
+                                  if (FFAppState().openView)
+                                    FlutterFlowWebView(
+                                      content: valueOrDefault<String>(
+                                        widget.urun?.modelPath,
+                                        'null',
+                                      ),
+                                      height: 500.0,
+                                      verticalScroll: false,
+                                      horizontalScroll: false,
+                                      html: true,
                                     ),
-                                    child: Image.network(
-                                      icerikUrunlerRecord.imgPath,
-                                      width: double.infinity,
-                                      height: 470.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'imageOnPageLoadAnimation']!),
                                 ],
                               ),
                               Opacity(
@@ -213,8 +222,10 @@ class _IcerikWidgetState extends State<IcerikWidget>
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 10.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        FFAppState().openView =
+                                            !FFAppState().openView;
+                                        setState(() {});
                                       },
                                       text: '3D',
                                       options: FFButtonOptions(
