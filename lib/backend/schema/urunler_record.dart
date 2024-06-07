@@ -6,13 +6,12 @@ import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 
 class UrunlerRecord extends FirestoreRecord {
   UrunlerRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -46,6 +45,11 @@ class UrunlerRecord extends FirestoreRecord {
   String get postedName => _postedName ?? '';
   bool hasPostedName() => _postedName != null;
 
+  // "modelPath" field.
+  String? _modelPath;
+  String get modelPath => _modelPath ?? '';
+  bool hasModelPath() => _modelPath != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _imgPath = snapshotData['imgPath'] as String?;
@@ -53,6 +57,7 @@ class UrunlerRecord extends FirestoreRecord {
     _date = snapshotData['date'] as String?;
     _ppPath = snapshotData['ppPath'] as String?;
     _postedName = snapshotData['postedName'] as String?;
+    _modelPath = snapshotData['modelPath'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -96,6 +101,7 @@ Map<String, dynamic> createUrunlerRecordData({
   String? date,
   String? ppPath,
   String? postedName,
+  String? modelPath,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -105,6 +111,7 @@ Map<String, dynamic> createUrunlerRecordData({
       'date': date,
       'ppPath': ppPath,
       'postedName': postedName,
+      'modelPath': modelPath,
     }.withoutNulls,
   );
 
@@ -121,12 +128,20 @@ class UrunlerRecordDocumentEquality implements Equality<UrunlerRecord> {
         e1?.likes == e2?.likes &&
         e1?.date == e2?.date &&
         e1?.ppPath == e2?.ppPath &&
-        e1?.postedName == e2?.postedName;
+        e1?.postedName == e2?.postedName &&
+        e1?.modelPath == e2?.modelPath;
   }
 
   @override
-  int hash(UrunlerRecord? e) => const ListEquality()
-      .hash([e?.name, e?.imgPath, e?.likes, e?.date, e?.ppPath, e?.postedName]);
+  int hash(UrunlerRecord? e) => const ListEquality().hash([
+        e?.name,
+        e?.imgPath,
+        e?.likes,
+        e?.date,
+        e?.ppPath,
+        e?.postedName,
+        e?.modelPath
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is UrunlerRecord;

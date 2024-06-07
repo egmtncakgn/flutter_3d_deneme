@@ -1,2 +1,7 @@
-# FlutterThingiverse3Ddeneme
- 3d model görünüleyiciyi denemek için yaptığım thingiverse klonu (klon denebilirse tabi))
+# Flutter3DThingiverseClone
+
+A new Flutter project.
+
+## Getting Started
+
+FlutterFlow projects are built to run on the Flutter _stable_ release.

@@ -1,10 +1,7 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'main_page_model.dart';
 export 'main_page_model.dart';
 
@@ -55,7 +52,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
               SliverAppBar(
                 pinned: false,
                 floating: false,
-                backgroundColor: Color(0xFF196EF0),
+                backgroundColor: const Color(0xFF196EF0),
                 automaticallyImplyLeading: false,
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(6.0),
@@ -66,11 +63,11 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                     fit: BoxFit.fitWidth,
                   ),
                 ),
-                actions: [],
+                actions: const [],
                 flexibleSpace: FlexibleSpaceBar(
                   title: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(45.0, 0.0, 0.0, 10.0),
+                        const EdgeInsetsDirectional.fromSTEB(45.0, 0.0, 0.0, 10.0),
                     child: TextFormField(
                       controller: _model.textController,
                       focusNode: _model.textFieldFocusNode,
@@ -98,29 +95,29 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0x00000000),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0x00000000),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color(0x00000000),
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(4.0),
                         ),
                         filled: true,
-                        fillColor: Color(0xFF10469C),
-                        prefixIcon: Icon(
+                        fillColor: const Color(0xFF10469C),
+                        prefixIcon: const Icon(
                           Icons.search_outlined,
                         ),
                       ),
@@ -135,7 +132,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                   centerTitle: true,
                   expandedTitleScale: 1.0,
                   titlePadding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                 ),
                 elevation: 0.0,
               )
@@ -146,8 +143,9 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                   top: false,
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                     child: SingleChildScrollView(
+                      primary: false,
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,7 +183,18 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      context.pushNamed('icerik');
+                                      context.pushNamed(
+                                        'icerik',
+                                        queryParameters: {
+                                          'urun': serializeParam(
+                                            listViewUrunlerRecord,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'urun': listViewUrunlerRecord,
+                                        },
+                                      );
                                     },
                                     child: Container(
                                       width: double.infinity,
@@ -194,7 +203,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                             .secondaryBackground,
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 12.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -202,7 +211,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 8.0, 16.0, 12.0),
                                               child: ClipRRect(
@@ -217,7 +226,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 4.0),
                                               child: Row(
@@ -241,7 +250,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 4.0),
                                               child: Row(
@@ -273,7 +282,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 4.0,
                                                                 10.0, 0.0),
                                                     child: Text(
