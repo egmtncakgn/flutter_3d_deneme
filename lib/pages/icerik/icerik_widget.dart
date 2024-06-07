@@ -183,36 +183,44 @@ class _IcerikWidgetState extends State<IcerikWidget>
                           child: Stack(
                             alignment: const AlignmentDirectional(0.0, -1.0),
                             children: [
-                              Stack(
-                                children: [
-                                  if (FFAppState().openView == false)
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(16.0),
-                                        bottomRight: Radius.circular(16.0),
-                                        topLeft: Radius.circular(0.0),
-                                        topRight: Radius.circular(0.0),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 20.0),
+                                child: Stack(
+                                  children: [
+                                    if (FFAppState().openView)
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: FlutterFlowWebView(
+                                          content: valueOrDefault<String>(
+                                            widget.urun?.modelPath,
+                                            'null',
+                                          ),
+                                          height: 500.0,
+                                          verticalScroll: false,
+                                          horizontalScroll: false,
+                                          html: true,
+                                        ),
                                       ),
-                                      child: Image.network(
-                                        icerikUrunlerRecord.imgPath,
-                                        width: double.infinity,
-                                        height: 470.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ).animateOnPageLoad(animationsMap[
-                                        'imageOnPageLoadAnimation']!),
-                                  if (FFAppState().openView)
-                                    FlutterFlowWebView(
-                                      content: valueOrDefault<String>(
-                                        widget.urun?.modelPath,
-                                        'null',
-                                      ),
-                                      height: 500.0,
-                                      verticalScroll: false,
-                                      horizontalScroll: false,
-                                      html: true,
-                                    ),
-                                ],
+                                    if (FFAppState().openView == false)
+                                      ClipRRect(
+                                        borderRadius: const BorderRadius.only(
+                                          bottomLeft: Radius.circular(16.0),
+                                          bottomRight: Radius.circular(16.0),
+                                          topLeft: Radius.circular(0.0),
+                                          topRight: Radius.circular(0.0),
+                                        ),
+                                        child: Image.network(
+                                          icerikUrunlerRecord.imgPath,
+                                          width: double.infinity,
+                                          height: 470.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ).animateOnPageLoad(animationsMap[
+                                          'imageOnPageLoadAnimation']!),
+                                  ],
+                                ),
                               ),
                               Opacity(
                                 opacity: 0.8,
@@ -261,7 +269,7 @@ class _IcerikWidgetState extends State<IcerikWidget>
                                 alignment: const AlignmentDirectional(0.0, 1.0),
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 370.0, 0.0, 0.0),
+                                      0.0, 400.0, 0.0, 0.0),
                                   child: ClipRRect(
                                     borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(0.0),
