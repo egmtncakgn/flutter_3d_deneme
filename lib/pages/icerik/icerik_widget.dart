@@ -175,6 +175,7 @@ class _IcerikWidgetState extends State<IcerikWidget>
               body: Builder(
                 builder: (context) {
                   return SingleChildScrollView(
+                    primary: false,
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -197,28 +198,32 @@ class _IcerikWidgetState extends State<IcerikWidget>
                                             widget.urun?.modelPath,
                                             'null',
                                           ),
-                                          height: 500.0,
-                                          verticalScroll: false,
-                                          horizontalScroll: false,
+                                          height: 400.0,
+                                          verticalScroll: true,
+                                          horizontalScroll: true,
                                           html: true,
                                         ),
                                       ),
                                     if (FFAppState().openView == false)
-                                      ClipRRect(
-                                        borderRadius: const BorderRadius.only(
-                                          bottomLeft: Radius.circular(16.0),
-                                          bottomRight: Radius.circular(16.0),
-                                          topLeft: Radius.circular(0.0),
-                                          topRight: Radius.circular(0.0),
-                                        ),
-                                        child: Image.network(
-                                          icerikUrunlerRecord.imgPath,
-                                          width: double.infinity,
-                                          height: 470.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'imageOnPageLoadAnimation']!),
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: ClipRRect(
+                                          borderRadius: const BorderRadius.only(
+                                            bottomLeft: Radius.circular(16.0),
+                                            bottomRight: Radius.circular(16.0),
+                                            topLeft: Radius.circular(0.0),
+                                            topRight: Radius.circular(0.0),
+                                          ),
+                                          child: Image.network(
+                                            icerikUrunlerRecord.imgPath,
+                                            width: double.infinity,
+                                            height: 470.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ).animateOnPageLoad(animationsMap[
+                                            'imageOnPageLoadAnimation']!),
+                                      ),
                                   ],
                                 ),
                               ),
